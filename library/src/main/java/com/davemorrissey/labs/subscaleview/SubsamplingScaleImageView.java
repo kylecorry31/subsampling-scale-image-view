@@ -2582,6 +2582,29 @@ public class SubsamplingScaleImageView extends View {
     }
 
     /**
+     * Externally change the scale of the source image. This may be used with getScale()
+     * to restore the scale after a screen rotate.
+     * @param scale New scale to set.
+     */
+    public final void requestScale(float scale) {
+        this.anim = null;
+        this.pendingScale = scale;
+        invalidate();
+    }
+
+    /**
+     * Externally change the translation of the source image. This may be used with getCenter()
+     * to restore the center after a screen rotate.
+     * @param sCenter New source image coordinate to center on the screen, subject to boundaries.
+     */
+    public final void requestCenter(@Nullable PointF sCenter) {
+        this.anim = null;
+        this.sPendingCenter = sCenter;
+        this.sRequestedCenter = sCenter;
+        invalidate();
+    }
+
+    /**
      * Fully zoom out and return the image to the middle of the screen. This might be useful if you have a view pager
      * and want images to be reset when the user has moved to another page.
      */
