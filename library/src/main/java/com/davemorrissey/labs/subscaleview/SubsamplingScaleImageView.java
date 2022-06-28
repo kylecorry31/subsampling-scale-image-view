@@ -2589,6 +2589,9 @@ public class SubsamplingScaleImageView extends View {
     public final void requestScale(float scale) {
         this.anim = null;
         this.pendingScale = scale;
+        if (this.sPendingCenter == null){
+            this.sPendingCenter = getCenter();
+        }
         invalidate();
     }
 
@@ -2601,6 +2604,9 @@ public class SubsamplingScaleImageView extends View {
         this.anim = null;
         this.sPendingCenter = sCenter;
         this.sRequestedCenter = sCenter;
+        if (this.pendingScale == null){
+            this.pendingScale = getScale();
+        }
         invalidate();
     }
 
