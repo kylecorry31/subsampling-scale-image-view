@@ -1329,7 +1329,7 @@ public class SubsamplingScaleImageView extends View {
     /**
      * Determine whether tile is visible.
      */
-    private boolean tileVisible(Tile tile) {
+    protected boolean tileVisible(Tile tile) {
         float sVisLeft = viewToSourceX(0),
             sVisRight = viewToSourceX(getWidth()),
             sVisTop = viewToSourceY(0),
@@ -2044,7 +2044,7 @@ public class SubsamplingScaleImageView extends View {
     /**
      * Convert screen to source x coordinate.
      */
-    private float viewToSourceX(float vx) {
+    protected float viewToSourceX(float vx) {
         if (vTranslate == null) { return Float.NaN; }
         return (vx - vTranslate.x)/scale;
     }
@@ -2052,7 +2052,7 @@ public class SubsamplingScaleImageView extends View {
     /**
      * Convert screen to source y coordinate.
      */
-    private float viewToSourceY(float vy) {
+    protected float viewToSourceY(float vy) {
         if (vTranslate == null) { return Float.NaN; }
         return (vy - vTranslate.y)/scale;
     }
@@ -2155,7 +2155,7 @@ public class SubsamplingScaleImageView extends View {
     /**
      * Convert source to view x coordinate.
      */
-    private float sourceToViewX(float sx) {
+    protected float sourceToViewX(float sx) {
         if (vTranslate == null) { return Float.NaN; }
         return (sx * scale) + vTranslate.x;
     }
@@ -2163,7 +2163,7 @@ public class SubsamplingScaleImageView extends View {
     /**
      * Convert source to view y coordinate.
      */
-    private float sourceToViewY(float sy) {
+    protected float sourceToViewY(float sy) {
         if (vTranslate == null) { return Float.NaN; }
         return (sy * scale) + vTranslate.y;
     }
