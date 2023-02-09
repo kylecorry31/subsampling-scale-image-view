@@ -473,6 +473,18 @@ public class SubsamplingScaleImageView extends View {
         }
     }
 
+    public boolean isZooming() {
+        return isZooming;
+    }
+
+    public boolean isPanning() {
+        return isPanning;
+    }
+
+    public boolean isQuickScaling() {
+        return isQuickScaling;
+    }
+
     /**
      * Reset all state before setting/changing image or setting new rotation.
      */
