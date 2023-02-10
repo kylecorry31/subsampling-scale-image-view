@@ -188,6 +188,8 @@ public class SubsamplingScaleImageView extends View {
 
     // Double tap zoom behaviour
     private float doubleTapZoomScale = 1F;
+    private float doubleTapZoomBy = 2F;
+    private boolean alwaysZoomDoubleTap = false;
     private int doubleTapZoomStyle = ZOOM_FOCUS_FIXED;
     private int doubleTapZoomDuration = 500;
 
@@ -962,8 +964,14 @@ public class SubsamplingScaleImageView extends View {
             }
         }
         float doubleTapZoomScale = Math.min(maxScale, SubsamplingScaleImageView.this.doubleTapZoomScale);
-        boolean zoomIn = (scale <= doubleTapZoomScale * 0.9) || scale == minScale;
-        float targetScale = zoomIn ? doubleTapZoomScale : minScale();
+        boolean zoomIn = (alwaysZoomDoubleTap && doubleTapZoomBy > 1) || (scale <= doubleTapZoomScale * 0.9) || scale == minScale;
+        float targetScale;
+        if (alwaysZoomDoubleTap){
+            targetScale = Math.max(Math.min(scale * doubleTapZoomBy, maxScale), minScale);
+        } else {
+            targetScale = zoomIn ? doubleTapZoomScale : minScale();
+        }
+
         if (doubleTapZoomStyle == ZOOM_FOCUS_CENTER_IMMEDIATE) {
             setScaleAndCenter(targetScale, sCenter);
         } else if (doubleTapZoomStyle == ZOOM_FOCUS_CENTER || !zoomIn || !panEnabled) {
@@ -2817,6 +2825,22 @@ public class SubsamplingScaleImageView extends View {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         float averageDpi = (metrics.xdpi + metrics.ydpi)/2;
         setDoubleTapZoomScale(averageDpi/dpi);
+    }
+
+    public final void setAlwaysZoomDoubleTap(boolean alwaysZoomDoubleTap) {
+        this.alwaysZoomDoubleTap = alwaysZoomDoubleTap;
+    }
+
+    public final boolean getAlwaysZoomDoubleTap() {
+        return alwaysZoomDoubleTap;
+    }
+
+    public final void setAlwaysZoomDoubleTapZoomScale(float alwaysZoomDoubleTapZoomScale) {
+        this.doubleTapZoomBy = alwaysZoomDoubleTapZoomScale;
+    }
+
+    public final float getAlwaysZoomDoubleTapZoomScale() {
+        return doubleTapZoomBy;
     }
 
     /**
