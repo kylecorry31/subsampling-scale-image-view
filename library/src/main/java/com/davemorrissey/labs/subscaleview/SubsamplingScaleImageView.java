@@ -967,7 +967,7 @@ public class SubsamplingScaleImageView extends View {
         boolean zoomIn = (alwaysZoomDoubleTap && doubleTapZoomBy > 1) || (scale <= doubleTapZoomScale * 0.9) || scale == minScale;
         float targetScale;
         if (alwaysZoomDoubleTap){
-            targetScale = Math.max(Math.min(scale * doubleTapZoomBy, maxScale), minScale);
+            targetScale = Math.max(Math.min(scale * doubleTapZoomBy, maxScale), minScale());
         } else {
             targetScale = zoomIn ? doubleTapZoomScale : minScale();
         }
