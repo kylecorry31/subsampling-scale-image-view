@@ -1903,15 +1903,15 @@ public class SubsamplingScaleImageView extends View {
 
     protected static class Tile {
 
-        protected Rect sRect;
-        protected int sampleSize;
-        protected Bitmap bitmap;
-        protected boolean loading;
-        protected boolean visible;
+        public Rect sRect;
+        public int sampleSize;
+        public Bitmap bitmap;
+        public boolean loading;
+        public boolean visible;
 
         // Volatile fields instantiated once then updated before use to reduce GC.
-        protected Rect vRect;
-        protected Rect fileSRect;
+        public Rect vRect;
+        public Rect fileSRect;
 
     }
 
