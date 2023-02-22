@@ -1901,17 +1901,17 @@ public class SubsamplingScaleImageView extends View {
         asyncTask.executeOnExecutor(executor);
     }
 
-    private static class Tile {
+    protected static class Tile {
 
-        private Rect sRect;
-        private int sampleSize;
-        private Bitmap bitmap;
-        private boolean loading;
-        private boolean visible;
+        protected Rect sRect;
+        protected int sampleSize;
+        protected Bitmap bitmap;
+        protected boolean loading;
+        protected boolean visible;
 
         // Volatile fields instantiated once then updated before use to reduce GC.
-        private Rect vRect;
-        private Rect fileSRect;
+        protected Rect vRect;
+        protected Rect fileSRect;
 
     }
 
