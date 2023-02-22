@@ -1308,7 +1308,7 @@ public class SubsamplingScaleImageView extends View {
      * that are at least as high resolution as the screen. Frees up bitmaps that are now off the screen.
      * @param load Whether to load the new tiles needed. Use false while scrolling/panning for performance.
      */
-    private void refreshRequiredTiles(boolean load) {
+    protected void refreshRequiredTiles(boolean load) {
         if (decoder == null || tileMap == null) { return; }
 
         int sampleSize = Math.min(fullImageSampleSize, calculateInSampleSize(scale));
