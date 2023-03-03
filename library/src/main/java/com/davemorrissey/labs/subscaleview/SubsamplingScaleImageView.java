@@ -198,7 +198,7 @@ public class SubsamplingScaleImageView extends View {
     private float scaleStart;
 
     // Screen coordinate of top-left corner of source image
-    private PointF vTranslate;
+    public PointF vTranslate;
     private PointF vTranslateStart;
     private PointF vTranslateBefore;
 
